@@ -21,5 +21,5 @@
    
 **Run:**
 
-- Start the backend first: `npm run start:dev` (in the `backend/` folder).
-- Then start the frontend: `npm run dev` (in the `frontend/` folder).
+- Start the backend first: `npm run start:dev` (in the `backend/` folder). Backend is set to port 3000
+- Then start the frontend: `npm run dev` (in the `frontend/` folder). Frontend is set to port 3001
