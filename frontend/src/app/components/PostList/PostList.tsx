@@ -20,6 +20,9 @@ const PostList: React.FC = () => {
     (state: RootState) => state.posts
   );
 
+  const [searchTerm, setSearchTerm] = useState<string>("");
+  const [filterAuthor, setFilterAuthor] = useState<string>("");
+
   const [editingPostId, setEditingPostId] = useState<number | null>(null);
   const [updatedTitle, setUpdatedTitle] = useState<string>("");
   const [updatedContent, setUpdatedContent] = useState<string>("");
@@ -86,13 +89,46 @@ const PostList: React.FC = () => {
     }
   };
 
+  const filteredPosts = reversedPosts.filter((post) => {
+    const matchesSearch =
+      post.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      post.content.toLowerCase().includes(searchTerm.toLowerCase());
+    const matchesAuthor = filterAuthor
+      ? post.authorName.toLowerCase().includes(filterAuthor.toLowerCase())
+      : true;
+    return matchesSearch && matchesAuthor;
+  });
+
   return (
     <div className={styles.container}>
       <div className={styles.createPostForm}>
         <CreatePost />
       </div>
+
+      <div className={styles.searchFilter}>
+        <input
+          type="text"
+          placeholder="Search posts"
+          value={searchTerm}
+          onChange={(e) => setSearchTerm(e.target.value)}
+          className={styles.searchInput}
+        />
+        <select
+          value={filterAuthor}
+          onChange={(e) => setFilterAuthor(e.target.value)}
+          className={styles.filterSelect}
+        >
+          <option value="">Filter by author</option>
+          {[...new Set(posts.map((post) => post.authorName))].map((author) => (
+            <option key={author} value={author}>
+              {author}
+            </option>
+          ))}
+        </select>
+      </div>
+
       <div className={styles.postList}>
-        {reversedPosts.map((post) => {
+        {filteredPosts.map((post) => {
           const timeAgo = formatDistanceToNow(new Date(post.createdAt), {
             addSuffix: true,
           });

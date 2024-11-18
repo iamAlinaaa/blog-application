@@ -312,3 +312,47 @@
     transform: rotate(360deg);
   }
 }
+
+.searchFilter {
+  display: flex;
+  flex-direction: row;
+  gap: 15px;
+  margin-bottom: 20px;
+}
+
+.searchInput,
+.filterSelect {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid rgba(200, 200, 200, 0.7);
+  border-radius: 5px;
+  font-size: 16px;
+  font-family: inherit;
+  background-color: rgba(255, 255, 255, 0.5);
+  line-height: 1.6;
+  min-height: 3em;
+}
+
+.searchInput:focus,
+.filterSelect:focus {
+  outline: none;
+  border-color: rgba(24, 119, 242, 0.8);
+}
+
+.searchInput {
+  margin-bottom: 10px;
+}
+
+.filterSelect {
+  margin-bottom: 10px;
+}
+
+.searchInput::placeholder,
+.filterSelect::placeholder {
+  color: rgba(150, 150, 150, 0.7);
+}
+
+.filterSelect {
+  font-size: 16px;
+  background-color: rgba(255, 255, 255, 0.5);
+}
