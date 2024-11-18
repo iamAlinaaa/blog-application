@@ -13,12 +13,12 @@
 
 **Frontend:**
 
-- **Tech Stack**: Next.js, TypeScript, Redux
+- **Tech Stack**: Next.js, TypeScript, Redux, SCSS
 - **Setup**:
   - Create a `.env.local` file in the `frontend/` folder.
   - Copy the API URL from the `.env.example` file into the `.env.local` file.
   - Install dependencies: `npm install`.
-  - 
+   
 **Run:**
 
 - Start the backend first: `npm run start:dev` (in the `backend/` folder).
